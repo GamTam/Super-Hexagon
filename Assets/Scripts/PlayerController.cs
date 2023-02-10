@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,14 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private string _song;
+
+    public Stats _stats = new Stats()
+    {
+        ATK = 12,
+        DEF = 2,
+        mHP = 50,
+        HP = 50
+    };
 
     private PlayerInput _playerInput;
     private InputAction _moveVector;
@@ -25,4 +34,24 @@ public class PlayerController : MonoBehaviour
         
         gameObject.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z - (_moveSpeed * moveVector.x * Time.deltaTime ));
     }
+
+    public void GetHurt(int dmg)
+    {
+        _stats.HP -= dmg;
+        if (_stats.HP <= 0)
+        {
+            Globals.MusicManager.fadeOut(1);
+            Destroy(gameObject);
+        }
+    }
+}
+
+[Serializable]
+public struct Stats
+{
+    public int ATK;
+    public int DEF;
+    public int mHP;
+    public int HP;
+    public int SPEED;
 }
