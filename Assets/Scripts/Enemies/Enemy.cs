@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour
         Debug.Log(_player);
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
         MoveTowardsPlayer(_stats.SPEED);

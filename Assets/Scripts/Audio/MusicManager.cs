@@ -15,7 +15,6 @@ public class MusicManager : MonoBehaviour
 
     public static float currentPoint = 0;
 
-    // Start is called before the first frame update
     void Awake()
     {
         if (Globals.MusicManager != null)

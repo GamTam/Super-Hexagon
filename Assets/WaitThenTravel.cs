@@ -6,7 +6,6 @@ public class WaitThenTravel : MonoBehaviour
 {
     [SerializeField] private Vector3 _destination;
     
-    // Start is called before the first frame update
     IEnumerator Start()
     {
         yield return new WaitForSeconds(2);
@@ -23,11 +22,5 @@ public class WaitThenTravel : MonoBehaviour
         }
         
         gameObject.transform.localPosition = _destination;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
